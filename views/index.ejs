@@ -1,0 +1,49 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Public Domain Plays App</title>
+  </head>
+
+  <body>
+    <h1>Find the right play for you!</h1>
+    <form action="Search">
+        <select name="# of Roles">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+        </select>
+        <select name="# of Roles">
+            <option value="drama">Drama</option>
+            <option value="tragedy">Tragedy</option>
+            <option value="romance">Romance</option>           
+        </select>
+        <input type="submit" value="Search">
+    </form>
+       
+    <ul class="plays">
+        <li class="title">
+            <h2>Title:</h2>
+            <span><%= plays[1].title %></span>
+        </li>
+        <li class="genre">
+            <h2>Genre:</h2>
+            <span><%= plays[1].genre %></span>
+        </li>
+        <li class="roles">
+            <h2>Roles:</h2>
+            <span><%= plays[1].roles %></span>
+        </li>
+    </ul>
+
+
+  </body>
+</html>
