@@ -57,25 +57,6 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         }
 
     })
-    
-    // app.get('/Search', (req, res) => {
-    //     rolesNum = req.body.roles
-    //     genreInp = req.body.genre
-    //     playCollection.find({roles:rolesNum, genre:genreInp}).toArray()
-    //         .then(results => {
-    //             console.log (results)
-    //             res.render('index.ejs',{plays: results})
-    //         })
-    //         .catch(error => console.error(error))
-        
-           
-    // })
-
-
-
-
-
-
 
 
   })
