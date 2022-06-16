@@ -8,20 +8,33 @@
 
   <body>
     <h1>Find the right play for you!</h1>
-    <form action="Search">
-        <select name="# of Roles">
-            <option value=1>1</option>
-            <option value=2>2</option>
-            <option value=3>3</option>
-            <option value=4>4</option>
-            <option value=5>5</option>
-            <option value=6>6</option>
-            <option value=7>7</option>
-            <option value=8>8</option>
-            <option value=9>9</option>
-            <option value=10>10</option>
+    <form method="post" action="Search">
+        <select name="roles">
+            <option value=""># of Roles<option>
+            <option value="1">1</option>
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+            <option value='9'>9</option>
+            <option value='10'>10</option>
+            <option value='11'>11</option>
+            <option value='12'>12</option>
+            <option value='13'>13</option>
+            <option value='14'>14</option>
+            <option value='15'>15</option>
+            <option value='16'>16</option>
+            <option value='17'>17</option>
+            <option value='18'>18</option>
+            <option value='19'>19</option>
+            <option value='20'>20</option>
+            <option value='21'>21</option>
         </select>
-        <select name="# of Roles">
+        <select name="genre">
+            <option value="">Genre<option>
             <option value="drama">Drama</option>
             <option value="tragedy">Tragedy</option>
             <option value="romance">Romance</option>           
@@ -29,20 +42,21 @@
         <input type="submit" value="Search">
     </form>
        
-    <ul class="plays">
-        <li class="title">
-            <h2>Title:</h2>
-            <span><%= plays[1].title %></span>
-        </li>
-        <li class="genre">
-            <h2>Genre:</h2>
-            <span><%= plays[1].genre %></span>
-        </li>
-        <li class="roles">
-            <h2>Roles:</h2>
-            <span><%= plays[1].roles %></span>
-        </li>
-    </ul>
+
+
+    <section data-position="plays">
+        <h2>Results</h2>
+  
+        <ul class="results">
+          <% for(var i = 0; i < plays.length; i++) {%>
+          <li class="results">
+            <span><%= plays[i].title %></span>:
+            <span><%= plays[i].genre %></span>
+            <span><%= plays[i].roles %></span>
+          </li>
+          <% } %>
+        </ul>
+      </section>
 
 
   </body>

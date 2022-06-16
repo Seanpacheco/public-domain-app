@@ -14,11 +14,12 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     console.log('Connected to Database')
     const db = client.db('public-domain') 
     const playCollection = db.collection('plays')
+    let rolesNum
+    let genreInp = ''
 
     app.set('view engine', 'ejs')
     
-    app.set('view engine', 'ejs')
-    
+
     app.get('/', (req, res) => {
         playCollection.find().toArray()
             .then(results => {
@@ -26,10 +27,49 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
                 res.render('index.ejs',{plays: results})
             })
             .catch(error => console.error(error))
+    
        
-  })
-  
+    })
+    app.post('/Search', (req,res) => {
+        rolesNum = req.body.roles
+        genreInp = req.body.genre
+        if(rolesNum === ''){
+        playCollection.find({genre: genreInp}).toArray()
+            .then(results => {
+                console.log (results)
+                res.render('index.ejs',{plays: results})
+            })
+            .catch(error => console.error(error))
+        }else if (genreInp === ''){
+            playCollection.find({roles: rolesNum}).toArray()
+            .then(results => {
+                console.log (results)
+                res.render('index.ejs',{plays: results})
+            })
+            .catch(error => console.error(error))
+        }else{
+            playCollection.find({roles: rolesNum, genre: genreInp}).toArray()
+            .then(results => {
+                console.log (results)
+                res.render('index.ejs',{plays: results})
+            })
+            .catch(error => console.error(error))
+        }
 
+    })
+    
+    // app.get('/Search', (req, res) => {
+    //     rolesNum = req.body.roles
+    //     genreInp = req.body.genre
+    //     playCollection.find({roles:rolesNum, genre:genreInp}).toArray()
+    //         .then(results => {
+    //             console.log (results)
+    //             res.render('index.ejs',{plays: results})
+    //         })
+    //         .catch(error => console.error(error))
+        
+           
+    // })
 
 
 
