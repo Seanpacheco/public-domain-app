@@ -7,6 +7,8 @@ const MongoClient = require('mongodb').MongoClient
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+
 const connectionString = 'mongodb+srv://Sean:gpVcS8bh4xXB8Zc@cluster0.0bzz7.mongodb.net/?retryWrites=true&w=majority'
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
@@ -18,6 +20,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     let genreInp = ''
 
     app.set('view engine', 'ejs')
+
+    app.use(express.static('public'))
     
 
     app.get('/', (req, res) => {
@@ -25,6 +29,8 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
             .then(results => {
                 console.log (results)
                 res.render('index.ejs',{plays: results})
+                
+
             })
             .catch(error => console.error(error))
     

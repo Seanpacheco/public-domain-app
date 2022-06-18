@@ -1,0 +1,12 @@
+body {
+    margin: 3rem;
+}
+h2 {
+    text-align: center;
+}
+.aboveFold {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
