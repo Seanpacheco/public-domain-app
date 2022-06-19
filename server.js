@@ -4,12 +4,15 @@ const express = require('express');
 const bodyParser= require('body-parser')
 const app = express();
 const MongoClient = require('mongodb').MongoClient
+require('dotenv').config({
+    path: './secrets/.env'
+})
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
 
-const connectionString = 'mongodb+srv://Sean:gpVcS8bh4xXB8Zc@cluster0.0bzz7.mongodb.net/?retryWrites=true&w=majority'
+const connectionString = process.env.DB_STRING
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
   .then(client => {
@@ -21,7 +24,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 
     app.set('view engine', 'ejs')
 
-    app.use(express.static('public'))
+    
     
 
     app.get('/', (req, res) => {
