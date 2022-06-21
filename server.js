@@ -1,7 +1,9 @@
 console.log('May Node be with you')
 
 const express = require('express');
-const bodyParser= require('body-parser')
+const bodyParser= require('body-parser');
+const { response } = require('express');
+const { ObjectId } = require('mongodb');
 const app = express();
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config({
@@ -9,6 +11,7 @@ require('dotenv').config({
 })
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 
 
 
@@ -39,6 +42,41 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     
        
     })
+
+    app.get('/titleSearch', async(req, res) => {
+        try {
+            let result = await collection.aggregate([
+                {
+                    "$Search": {
+                        "autocomplete": {
+                            "query": `${req.query.query}`,
+                            "path": "title",
+                            "fuzzy": {
+                                "maxEdits":2,
+                                "prefixLength":3
+                            }
+                        }
+                    }
+                }    
+            ]).toArray()
+            res.send(result)
+        }catch(error){
+            response.status(500).send({message: error.message})
+        }
+    }) 
+
+    app.get('/get/:id', async(req, res) => {
+        try {
+            let result = await collection.findOne({
+                "_id": ObjectId(req.params.id) 
+            })
+            res.send(results)
+        } catch(error) {
+            response.status(500).send({message: error.message})
+
+        }
+    })
+    
     app.post('/Search', (req,res) => {
         rolesNum = req.body.roles
         genreInp = req.body.genre
