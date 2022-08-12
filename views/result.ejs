@@ -1,0 +1,13 @@
+<section class="resultSection" data-position="plays">
+    <h2>Results</h2>
+
+    <ul class="results">
+    <% for(var i = 0; i < plays.length; i++) {%>
+    <li class="results">
+        <span><%= plays[i].title %></span>:
+        <span><%= plays[i].genre %></span>
+        <span><%= plays[i].roles %></span>
+    </li>
+    <% } %>
+    </ul>
+</section>

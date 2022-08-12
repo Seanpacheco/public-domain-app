@@ -11,7 +11,8 @@ require('dotenv').config({
 })
 
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(cors())
+// app.use(cors())
+app.use(express.static('public'));
 
 
 
@@ -34,20 +35,31 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         playCollection.find().toArray()
             .then(results => {
                 console.log (results)
-                res.render('index.ejs',{plays: results})
-                
-
+                res.sendFile(__dirname + '/views/index.html')
             })
             .catch(error => console.error(error))
     
        
     })
 
-    app.get('/titleSearch', async(req, res) => {
+    app.get('/result/:id', async (request, response) => {
+            try {
+                let results = await playCollection.findOne({
+                    "_id" : ObjectId(request.params.id)
+                })
+                
+                response.render('titleResult.ejs',{plays: results})
+                console.log(results)
+            } catch (error) {
+                response.status(500).send({message: error.message})
+            }         
+    })
+
+    app.get('/search', async(req, res) => {
         try {
-            let result = await collection.aggregate([
+            let result = await playCollection.aggregate([
                 {
-                    "$Search": {
+                    "$search": {
                         "autocomplete": {
                             "query": `${req.query.query}`,
                             "path": "title",
@@ -65,40 +77,41 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         }
     }) 
 
-    app.get('/get/:id', async(req, res) => {
-        try {
-            let result = await collection.findOne({
-                "_id": ObjectId(req.params.id) 
-            })
-            res.send(results)
-        } catch(error) {
-            response.status(500).send({message: error.message})
-
-        }
-    })
+    // app.get("/get/:id", async (request, response) => {
+    //     try {
+    //         let results = await playCollection.findOne({
+    //             "_id" : ObjectId(request.params.id)
+    //         })
+    //         response.send(results)
+    //         console.log(results)
+    //     } catch (error) {
+    //         response.status(500).send({message: error.message})
+    //     }
+    // }
+    // )
     
-    app.post('/Search', (req,res) => {
+    app.post('/filterSearch', (req,res) => {
         rolesNum = req.body.roles
         genreInp = req.body.genre
         if(rolesNum === ''){
         playCollection.find({genre: genreInp}).toArray()
             .then(results => {
                 console.log (results)
-                res.render('index.ejs',{plays: results})
+                res.render('result.ejs',{plays: results})
             })
             .catch(error => console.error(error))
         }else if (genreInp === ''){
             playCollection.find({roles: rolesNum}).toArray()
             .then(results => {
                 console.log (results)
-                res.render('index.ejs',{plays: results})
+                res.render('result.ejs',{plays: results})
             })
             .catch(error => console.error(error))
         }else{
             playCollection.find({roles: rolesNum, genre: genreInp}).toArray()
             .then(results => {
                 console.log (results)
-                res.render('index.ejs',{plays: results})
+                res.render('result.ejs',{plays: results})
             })
             .catch(error => console.error(error))
         }
