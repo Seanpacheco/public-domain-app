@@ -1,7 +1,76 @@
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+}
+
+
 body {
     margin: 3rem;
+    font-size: 16px;
 }
-h2 {
+nav {
+    padding: 0 15px;
+}
+a {
+    text-decoration: none;
+}
+.menu {
+    list-style-type: none;
+}
+.logo {
+    font-size: 20px;
+    padding: 7.5px 10px 7.5px 0;
+}
+.menu-item {
+    padding: 10px;
+}
+.menu-item-button {
+    padding: 9px 5px;
+}
+.menu-item:not(.button) a:hover,
+.menu-item a:hover::after {
+    color: lightskyblue;
+}
+
+/* Mobile Menu */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu li a {
+    display: block;
+    padding: 15px 5px;
+}
+.menu li.subitem a {
+    padding: 15px;
+}
+.toggle {
+    order: 1;
+    font-size: 20px;
+}
+.menu-item.button {
+    order: 2;
+}
+.menu-item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+.active .menu-item {
+    display: block;
+}
+/* divider between buttons and menu links */
+.button .secondary {
+    border-bottom: 1px black solid;
+}
+
+
+
+
+h2, h3 {
     text-align: center;
 }
 .aboveFold {
@@ -9,4 +78,7 @@ h2 {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+.ui-widget {
+    text-align: center;
 }
