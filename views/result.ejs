@@ -19,19 +19,26 @@
                 <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
             </ul>
         </nav>
-        <section class="resultSection" data-position="plays">
-            <h2>Results</h2>
+        <div class="wrapper">  
+            <section class="resultSection" data-position="plays">
+                <h2>Results</h2>
 
-            <ul class="results">
-            <% for(var i = 0; i < plays.length; i++) {%>
-            <li class="results">
-                <span><%= plays[i].title %></span>:
-                <span><%= plays[i].genre %></span>
-                <span><%= plays[i].roles %></span>
-            </li>
-            <% } %>
-            </ul>
-        </section>
+                <ul class="results">
+                    <li class="results list-header">
+                        <span>Title</span>
+                        <span>Genres</span>
+                        <span>Roles</span>
+                    </li>
+                    <% for(var i = 0; i < plays.length; i++) {%>
+                    <li class="results">
+                        <span><%= plays[i].title %></span>
+                        <span><%= plays[i].genre %></span>
+                        <span><%= plays[i].roles %></span>
+                    </li>
+                    <% } %>
+                </ul>
+            </section>
+        </div>
         <script>
             const toggle = document.querySelector('.toggle')
             const menu = document.querySelector('.menu')
