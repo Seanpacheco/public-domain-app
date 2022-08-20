@@ -42,6 +42,19 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
        
     })
 
+    app.get('/plays/:id', async (request, response) => {
+        try {
+            let results = await playCollection.findOne({
+                "_id" : ObjectId(request.params.id)
+            })
+            
+            response.render('play.ejs',{plays: results})
+            console.log(results)
+        } catch (error) {
+            response.status(500).send({message: error.message})
+        }         
+})
+
     app.get('/result/:id', async (request, response) => {
             try {
                 let results = await playCollection.findOne({

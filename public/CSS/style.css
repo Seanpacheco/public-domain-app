@@ -204,3 +204,13 @@ ul.results {
     width: 300px;
 
 }
+.profile-main {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 200px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.playwright {
+    text-transform: capitalize;
+}

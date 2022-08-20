@@ -20,7 +20,7 @@ $(document).ready(function () {
             console.log(ui.item.id)
             // fetch(`http://localhost:3000/get/${ui.item.id}`)
             //     .then(results => results.json())
-                window.location.assign(`/result/${ui.item.id}`)
+                window.location.assign(`/plays/${ui.item.id}`)
 
         }
     })

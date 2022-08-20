@@ -29,8 +29,8 @@
                         <span>Genres</span>
                         <span>Roles</span>
                     </li>
-                    <li class="results">
-                        <span><%= plays.title %></span>
+                    <li class="results" data-id='<%=plays._id%>'>
+                        <span><a href="/plays"><%= plays.title %></a></span>
                         <span>&nbsp<%= plays.genre %></span>
                         <span><%= plays.roles %></span>
                     </li>

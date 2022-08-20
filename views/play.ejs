@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= plays.title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="/CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="/CSS/normalize.css" type="text/css">
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li class="logo"><a href="/">PlayRight</a></li>
+            <li class="menu-item"><a href="#">About Us</a></li>
+            <li class="menu-item button"><a href="#">Log In</a></li>
+            <li class="menu-item button secondary"><a href="#">Sign Up</a></li>
+            <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </nav>
+    <div class="wrapper">
+        <div class="profile-main">
+            <section>
+                <h1>Title</h1>
+                <span><%= plays.title %></span>
+            </section>
+            <section class="playwright">
+                <h2>Playwright</h2>
+                <span><%= plays.playwright %></span>
+            </section>
+            <section>
+                <h2>Genres</h2>
+                <span class="genres"><%= plays.genre %></span>
+            </section>
+            <section>
+                <h2>Roles</h2>
+                <span><%= plays.roles %></span>
+                <h3>Male: </h3><span><%= plays.maleRoles %></span>
+                <h3>Female: </h3> <span><%= plays.femaleRoles %></span>
+            </section> 
+            <section>
+                <h2>Acts</h2>
+                <span><%= plays.acts %></span>
+            </section>          
+            <section>
+                <h2>Year</h2>
+                <span>n/a</span>
+            </section>
+            <section>
+                <h2>Synopsis</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla eligendi quo, magni error explicabo optio soluta aspernatur dolores exercitationem nemo esse omnis odit dolore itaque id possimus quaerat commodi?</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        const toggle = document.querySelector('.toggle')
+        const menu = document.querySelector('.menu')
+            
+            function toggleMenu() {
+                if (menu.classList.contains("active")) {
+                    menu.classList.remove("active")
+                    //adds menu icon
+                    toggle.querySelector("a").innerHTML = "<i class ='fas fa-bars'></i>"
+                }else {
+                    menu.classList.add("active")
+                    //adds close icon
+                    toggle.querySelector("a").innerHTML = "<i class ='fas fa-times'></i>"
+                }
+            }
+            
+            //event listener
+            toggle.addEventListener("click", toggleMenu, false)
+    </script>
+</body>
+</html>
