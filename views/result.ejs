@@ -32,7 +32,13 @@
                     <% for(var i = 0; i < plays.length; i++) {%>
                     <li class="results" data-id='<%=plays[i]._id%>'>
                         <span><a href="/plays/<%=plays[i]._id%>"><%= plays[i].title %></a></span>
-                        <span><%= plays[i].genre %></span>
+                        <% if(Array.isArray(plays[i].genre) === false) {%>
+                            <span class="genres"><%= plays[i].genre %></span> 
+                        <% } %>   
+                            
+                        <% if(Array.isArray(plays[i].genre) === true) {%>
+                            <span class="genres"><%= plays[i].genre[0] %>, <%= plays[i].genre[1] %></span> 
+                        <% } %> 
                         <span><%= plays[i].roles %></span>
                     </li>
                     <% } %>

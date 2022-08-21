@@ -32,7 +32,13 @@
             </section>
             <section>
                 <h2>Genres</h2>
-                <span class="genres"><%= plays.genre %></span>
+                <% if(Array.isArray(plays.genre) === false) {%>
+                <span class="genres"><%= plays.genre %></span> 
+                <% } %>   
+                
+                <% if(Array.isArray(plays.genre) === true) {%>
+                <span class="genres"><%= plays.genre[0] %>, <%= plays.genre[1] %></span> 
+                <% } %>  
             </section>
             <section>
                 <h2>Roles</h2>

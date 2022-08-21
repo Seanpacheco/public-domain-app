@@ -211,6 +211,6 @@ ul.results {
     flex-wrap: wrap;
     text-align: center;
 }
-.playwright {
+.playwright, .genres {
     text-transform: capitalize;
 }
