@@ -10,11 +10,17 @@ require('dotenv').config({
     path: './secrets/.env'
 })
 
+// const homeRoutes = require('./routes/home')
+// const searchRoutes = require('./routes/search')
+
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(cors())
 app.use(express.static('public'));
 
+// connectDB()
 
+// app.use('/', homeRoutes)
+// app.use('/search', searchRoutes)
 
 const connectionString = process.env.DB_STRING
 
