@@ -1,5 +1,5 @@
 # Public Domain Search App
-Write a short sentence or two about this project and what it does. Be sure to include a link and a screenshot (we're front end devs so we can actually see our work!).
+Search a MongoDb database for Public Domain plays that match specific parameters or search by name of play.
 
 ## How It's Made:
 
