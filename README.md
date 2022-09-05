@@ -1,4 +1,4 @@
-# Public Domain Search App
+# PlayRight
 Search a MongoDb database for Public Domain plays that match specific parameters or search by name of play.
 
 ## How It's Made:
