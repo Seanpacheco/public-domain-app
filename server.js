@@ -1,26 +1,58 @@
 console.log('May Node be with you')
 
 const express = require('express');
-const bodyParser= require('body-parser');
+const app = express();
+
 const { response } = require('express');
 const { ObjectId } = require('mongodb');
-const app = express();
 const MongoClient = require('mongodb').MongoClient
 require('dotenv').config({
     path: './secrets/.env'
 })
 
-// const homeRoutes = require('./routes/home')
-// const searchRoutes = require('./routes/search')
+const MongoStore = require('connect-mongo')(session)
+const passport = require('passport')
+const session = require('express-session')
+const mongoose = require('mogoose')
+const flash = require('express-flash')
+const logger = require('morgan')
+const connectDB = require('./config/database')
 
+const homeRoutes = require('./routes/home')
+const searchRoutes = require('./routes/search')
+
+const bodyParser= require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(cors())
 app.use(express.static('public'));
+//Using EJS for views
+app.set("view engine", "ejs");
 
 // connectDB()
 
 // app.use('/', homeRoutes)
-// app.use('/search', searchRoutes)
+
+// Passport config
+require("./config/passport")(passport);
+
+//Logging
+app.use(logger("dev"));
+
+app.use(
+    session({
+      secret: "keyboard cat",
+      resave: false,
+      saveUninitialized: false,
+      store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    })
+  );
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Use flash messages for errors, info, ect...
+app.use(flash());
 
 const connectionString = process.env.DB_STRING
 

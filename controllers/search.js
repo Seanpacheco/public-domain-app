@@ -1,7 +1,7 @@
 const Search = require('../models/Search')
 
 module.exports = {
-    playsid: async (request, response) => {
+    plays: async (request, response) => {
         try {
             let results = await playCollection.findOne({
                 "_id" : ObjectId(request.params.id)
@@ -13,7 +13,7 @@ module.exports = {
             response.status(500).send({message: error.message})
         }         
     },
-    searchDB: async(req, res) => {
+    searchDb: async(req, res) => {
         try {
             let result = await playCollection.aggregate([
                 {
@@ -34,7 +34,7 @@ module.exports = {
             response.status(500).send({message: error.message})
         }
     },
-    filterSearch: (req,res) => {
+    searchFilter: (req,res) => {
         rolesNum = req.body.roles
         genreInp = req.body.genre
         if(rolesNum === ''){
@@ -60,5 +60,17 @@ module.exports = {
             .catch(error => console.error(error))
         }
 
-    }
+    },
+    searchId: async (request, response) => {
+        try {
+            let results = await playCollection.findOne({
+                "_id" : ObjectId(request.params.id)
+            })
+            
+            response.render('play.ejs',{plays: results})
+            console.log(results)
+        } catch (error) {
+            response.status(500).send({message: error.message})
+        }         
+    },
 }
