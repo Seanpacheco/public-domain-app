@@ -3,10 +3,7 @@ const Play = require('../models/Play')
 module.exports = {
     plays: async (request, response) => {
         try {
-            let results = await Play.findOne({
-                "_id" : ObjectId(request.params.id)
-            })
-            
+            const results = await Play.findById(request.params.id)
             response.render('play.ejs',{plays: results})
             console.log(results)
         } catch (error) {
@@ -15,7 +12,7 @@ module.exports = {
     },
     searchDb: async(req, res) => {
         try {
-            let result = await Play.aggregate([
+            const result = await Play.aggregate([
                 {
                     "$search": {
                         "autocomplete": {
@@ -28,7 +25,7 @@ module.exports = {
                         }
                     }
                 }    
-            ]).toArray()
+            ])
             res.send(result)
         }catch(error){
             response.status(500).send({message: error.message})
@@ -59,10 +56,7 @@ module.exports = {
     },
     searchId: async (request, response) => {
         try {
-            let results = await Plays.findOne({
-                "_id" : ObjectId(request.params.id)
-            })
-            
+            const results = await Play.findById(request.params.id)          
             response.render('play.ejs',{plays: results})
             console.log(results)
         } catch (error) {
