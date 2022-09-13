@@ -1,5 +1,6 @@
+path = require('path')
 module.exports = {
     getIndex: (req,res) => {
-        res.sendFile(__dirname + '/views/index.html')
+        res.sendFile(path.join(__dirname, '../views', 'index.html'));
     } 
 }
