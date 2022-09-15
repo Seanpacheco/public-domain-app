@@ -37,7 +37,7 @@ h2, h3 {
 .search-sec .form-control{
     appearance: auto;
 }
-.search-slt{
+.search-slt, #title{
     display: block;
     width: 100%;
     font-size: 0.875rem;
@@ -67,6 +67,14 @@ h2, h3 {
     .search-sec{
         background: #1A4668;
     }
+}
+#logInField .form-group label, #sign-up-field .form-group label{
+    color: black !important;
+}{
+    color: black !important;
+}
+#sign-up-btn{
+    margin-top: 1rem;
 }
 .filterSearch {
     display: flex;
