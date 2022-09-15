@@ -36,45 +36,60 @@
                 </div>        
             </div>
         </nav>
-    <div class="wrapper">    
+    <div class="container">    
         <div class="page-main">
-            <section class="filterSearch">
-                <h1>Find the right play for you!</h1>
-                <form method="post" action="filterSearch">
-                    <select name="roles">
-                        <option value=""># of Roles<option>
-                        <option value="1">1</option>
-                        <option value='2'>2</option>
-                        <option value='3'>3</option>
-                        <option value='4'>4</option>
-                        <option value='5'>5</option>
-                        <option value='6'>6</option>
-                        <option value='7'>7</option>
-                        <option value='8'>8</option>
-                        <option value='9'>9</option>
-                        <option value='10'>10</option>
-                        <option value='11'>11</option>
-                        <option value='12'>12</option>
-                        <option value='13'>13</option>
-                        <option value='14'>14</option>
-                        <option value='15'>15</option>
-                        <option value='16'>16</option>
-                        <option value='17'>17</option>
-                        <option value='18'>18</option>
-                        <option value='19'>19</option>
-                        <option value='20'>20</option>
-                        <option value='21'>21</option>
-                    </select>
-                    <select name="genre">
-                        <option value="">Genre<option>
-                        <option value="drama">Drama</option>
-                        <option value="tragedy">Tragedy</option>
-                        <option value="romance">Romance</option>           
-                        <option value="comedy">Comedy</option>
-                        <option value="farce">Farce</option>
-                    </select>
-                    <input type="submit" value="Search">
-                </form>
+            <!-- new form -->
+            <section class="search-sec">
+                <div class="container text-center">
+                    <h1>Find the right play for you!</h1>
+                    <form method="post" action="filterSearch">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-4 col-sm-12 p-0">
+                                        <select name="roles" class="form-control search-slt" id="formControlSelect1">
+                                            <option value="" selected># of Roles<option>
+                                            <option value="1">1</option>
+                                            <option value='2'>2</option>
+                                            <option value='3'>3</option>
+                                            <option value='4'>4</option>
+                                            <option value='5'>5</option>
+                                            <option value='6'>6</option>
+                                            <option value='7'>7</option>
+                                            <option value='8'>8</option>
+                                            <option value='9'>9</option>
+                                            <option value='10'>10</option>
+                                            <option value='11'>11</option>
+                                            <option value='12'>12</option>
+                                            <option value='13'>13</option>
+                                            <option value='14'>14</option>
+                                            <option value='15'>15</option>
+                                            <option value='16'>16</option>
+                                            <option value='17'>17</option>
+                                            <option value='18'>18</option>
+                                            <option value='19'>19</option>
+                                            <option value='20'>20</option>
+                                            <option value='21'>21</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12 p-0">
+                                        <select name="genre" class="form-control search-slt" id="formControlSelect2">
+                                            <option value="" selected>Genre<option>
+                                            <option value="drama">Drama</option>
+                                            <option value="tragedy">Tragedy</option>
+                                            <option value="romance">Romance</option>           
+                                            <option value="comedy">Comedy</option>
+                                            <option value="farce">Farce</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-sm-12 p-0">
+                                        <button type="submit" class="btn btn-danger wrn-btn">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </section>
             <section class="titleSearchBar">
                 <h2>Already Know What Your Looking For?</h2>
