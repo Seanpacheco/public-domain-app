@@ -76,7 +76,12 @@ h2, h3 {
 #logInField .form-group label, #sign-up-field .form-group label{
     color: black !important;
 }
-
+#sign-up-submit-btn{
+    margin-top: 1rem;
+}
+#user-name-btn{
+    text-transform: capitalize;
+}
 .filterSearch {
     display: flex;
     justify-content: center;
