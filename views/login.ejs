@@ -9,12 +9,22 @@
 <body>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                    <%= el.msg %>
+                </div>
+              </div>
         <% }) %>    
     <% } %>
     <% if (locals.messages.info) { %>
         <% messages.info.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                    <%= el.msg %>
+                </div>
+              </div>
         <% }) %>    
     <% } %>
     <form action="/login" method="POST">

@@ -11,15 +11,55 @@
     <link rel="stylesheet" href="/CSS/normalize.css" type="text/css">
 </head>
 <body>
-    <nav>
-        <ul class="menu">
-            <li class="logo"><a href="/">PlayRight</a></li>
-            <li class="menu-item"><a href="#">About Us</a></li>
-            <li class="menu-item button"><a href="#">Log In</a></li>
-            <li class="menu-item button secondary"><a href="#">Sign Up</a></li>
-            <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-        </ul>
-    </nav>
+    <% if(typeof user != 'undefined') { %>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="assets/IMGS/theater-svgrepo-com.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                PlayRight</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav d-flex">
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="btn btn-outline-primary nav-link" data-bs-toggle="modal" href="#" role="button">Profile</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="btn btn-outline-primary nav-link" data-bs-toggle="modal" href="/logout" role="button">Log Out</a>
+                        </li>
+                    </ul>
+                </div>        
+            </div>
+        </nav>
+        <% }else{ %>
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="/">
+                    <img src="assets/IMGS/theater-svgrepo-com.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    PlayRight</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                        <ul class="navbar-nav d-flex">
+                            <li class="nav-item me-2">
+                                <a class="nav-link" aria-current="page" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary nav-link" data-bs-toggle="modal" href="#logInModal" role="button">Log In</a>
+                            </li>
+                            <li class="nav-item me-2">
+                                <a class="btn btn-outline-primary nav-link" data-bs-toggle="modal" href="#signUpModal" role="button">Sign Up</a>
+                            </li>
+                        </ul>
+                    </div>        
+                </div>
+            </nav>
+            <% } %>
     <div class="wrapper">
         <div class="profile-main">
             <section>
@@ -61,25 +101,5 @@
 
         </div>
     </div>
-
-    <script>
-        const toggle = document.querySelector('.toggle')
-        const menu = document.querySelector('.menu')
-            
-            function toggleMenu() {
-                if (menu.classList.contains("active")) {
-                    menu.classList.remove("active")
-                    //adds menu icon
-                    toggle.querySelector("a").innerHTML = "<i class ='fas fa-bars'></i>"
-                }else {
-                    menu.classList.add("active")
-                    //adds close icon
-                    toggle.querySelector("a").innerHTML = "<i class ='fas fa-times'></i>"
-                }
-            }
-            
-            //event listener
-            toggle.addEventListener("click", toggleMenu, false)
-    </script>
 </body>
 </html>
