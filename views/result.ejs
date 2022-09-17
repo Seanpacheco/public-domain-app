@@ -111,5 +111,118 @@
                 </tbody>
               </table>
         </div>
+        <% if(typeof user == 'undefined') { %>
+            <div class="modal fade" id="logInModal" aria-hidden="true" aria-labelledby="logInModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalToggleLabel">Log In</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/login" method="POST" accept-charset="UTF-8" role="form">
+                                <fieldset id="logInField">
+                                      <div class="form-group">
+                                        <label for="email" class="text-info">Email:</label>
+                                        <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="text-info">Password:</label>
+                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                                        </label>
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <input class="btn btn-success" type="submit" value="Login">
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <% if (locals.messages.errors) { %>
+                                <% messages.errors.forEach( el => { %>
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Danger:">
+                                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                          </svg>        
+                                        <div>
+                                            <%= el.msg %>
+                                        </div>
+                                      </div>
+                                <% }) %>    
+                            <% } %>
+                            <% if (locals.messages.info) { %>
+                                <% messages.info.forEach( el => { %>
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Danger:">
+                                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                          </svg>
+                                        <div>
+                                            <%= el.msg %>
+                                        </div>
+                                      </div>
+                                <% }) %>    
+                            <% } %>
+                            <h5>Don't have an account?</h5>
+                          <button class="btn btn-primary" data-bs-target="#signUpModal" data-bs-toggle="modal">Sign Up!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="signUpModal" aria-hidden="true" aria-labelledby="signUpModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalToggleLabel2">Sign Up</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/signup" method="POST" accept-charset="UTF-8" role="form">
+                                <fieldset id="sign-up-field">
+                                    <div class="form-group">
+                                        <label for="username" class="text-info">Username:</label>
+                                        <input class="form-control" placeholder="Username" name="userName" type="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="text-info">Email:</label>
+                                        <input class="form-control" placeholder="yourmail@example.com" name="email" type="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="text-info">Password:</label>
+                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="text-info">Confirm Password:</label>
+                                        <input class="form-control" placeholder="Password" name="confirmPassword" type="password" value="">
+                                    </div>
+                                    <div class="d-grid gap-2">
+                                        <input id="sign-up-submit-btn" class="btn btn-success" type="submit" value="Sign Up">
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <% if (locals.messages.errors) { %>
+                                <% messages.errors.forEach( el => { %>
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Danger:">
+                                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                          </svg>        
+                                        <div>
+                                            <%= el.msg %>
+                                        </div>
+                                      </div>
+                                <% }) %> 
+                             <% } %>
+                            <h5>Already have an account?</h5>
+                            <button class="btn btn-primary" data-bs-target="#logInModal" data-bs-toggle="modal">Log In!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
     </body>
 </html>
