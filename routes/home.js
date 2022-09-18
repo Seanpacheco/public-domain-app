@@ -3,9 +3,12 @@ const router = express.Router()
 const authController = require('../controllers/auth') 
 const homeController = require('../controllers/home')
 const searchController = require('../controllers/search')
+const dashboardController = require('../controllers/dashboard')
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get('/', homeController.getIndex); 
+
+router.get('/dashboard', ensureAuth, dashboardController.getDashboard);
 
 router.get('/plays/:id', searchController.searchId);
 
