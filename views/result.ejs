@@ -12,7 +12,7 @@
     </head>
     <body>    
         <% if(typeof user != 'undefined') { %>
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg container-xxl">
                 <div class="container-fluid">
                   <a class="navbar-brand" href="/">
                     <img src="assets/IMGS/theater-svgrepo-com.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -39,7 +39,7 @@
                 </div>
             </nav>
             <% }else{ %>
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-expand-lg container-xxl">
                     <div class="container-fluid">
                       <a class="navbar-brand" href="/">
                         <img src="assets/IMGS/theater-svgrepo-com.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -64,49 +64,31 @@
                 </nav>
                 <% } %>
         <div class="container">  
-            <!-- <section class="resultSection" data-position="plays">
-                <h2>Results</h2>
-
-                <ul class="results">
-                    <li class="results list-header">
-                        <span>Title</span>
-                        <span>Genres</span>
-                        <span>Roles</span>
-                    </li>
-                    <% for(var i = 0; i < plays.length; i++) {%>
-                    <li class="results" data-id='<%=plays[i]._id%>'>
-                        <span><a href="/plays/<%=plays[i]._id%>"><%= plays[i].title %></a></span>
-                        <% if(Array.isArray(plays[i].genre) === false) {%>
-                            <span class="genres"><%= plays[i].genre %></span> 
-                        <% } %>   
-                            
-                        <% if(Array.isArray(plays[i].genre) === true) {%>
-                            <span class="genres"><%= plays[i].genre[0] %>, <%= plays[i].genre[1] %></span> 
-                        <% } %> 
-                        <span><%= plays[i].roles %></span>
-                    </li>
-                    <% } %>
-                </ul>
-            </section> -->
             <table class="table">
                 <thead>
-                  <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Genres</th>
-                    <th scope="col">Roles</th>
-                    <th scope="col">Year</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Genres</th>
+                        <th scope="col">Roles</th>
+                        <th scope="col">Year</th>
+                    </tr>
                 </thead>
                 <tbody class="table-group-divider">
                 <% for(var i = 0; i < plays.length; i++) {%>
-                 <tr data-id='<%=plays[i]._id%>'>
-                    <td><a href="/plays/<%=plays[i]._id%>"><%= plays[i].title %></a></td>
-                    <td class="genres"><% for(var n = 0; n < plays[i].genre.length; n++) {%>
-                        <p><%= plays[i].genre[n] %></p>
-                    <% } %></td>
-                    <td><%= plays[i].roles %></td>
-                    <td><%= plays[i].year %></td>
-                  </tr>
+                    <tr data-id='<%=plays[i]._id%>'>
+                        <td><a href="/plays/<%=plays[i]._id%>"><%= plays[i].title %></a></td>
+                        <td class="genres"><% for(var n = 0; n < plays[i].genre.length; n++) {%>
+                            <p><%= plays[i].genre[n] %></p>
+                        <% } %></td>
+                        <td><%= plays[i].roles %></td>
+                        <td><%= plays[i].year %></td>
+                        <td>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em"  fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </td>
+                    </tr>
                 <% } %>
                 </tbody>
               </table>
