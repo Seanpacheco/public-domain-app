@@ -26,22 +26,50 @@ $(document).ready(function () {
     })
 })
 
-// toggle mobile menu
+//modals
+const logInModal = document.getElementById('logInModal')
+const logInBtn = document.getElementById('log-in-btn')
+logInModal.addEventListener('shown.bs.modal', openLogInModal)
 
-const toggle = document.querySelector('.toggle')
-const menu = document.querySelector('.menu')
- 
-function toggleMenu() {
-    if (menu.classList.contains("active")) {
-        menu.classList.remove("active")
-        //adds menu icon
-        toggle.querySelector("a").innerHTML = "<i class ='fas fa-bars'></i>"
-    }else {
-        menu.classList.add("active")
-        //adds close icon
-        toggle.querySelector("a").innerHTML = "<i class ='fas fa-times'></i>"
-    }
+logInModal.addEventListener('hide.bs.modal', closeLogInModal)
+
+
+function openLogInModal() {
+    localStorage.setItem('isLogInModalOpen', true);
+};
+
+function closeLogInModal() {
+    localStorage.setItem('isLogInModalOpen',false);
+};
+
+if(localStorage.getItem('isLogInModalOpen') == 'true') {
+    logInBtn.click()
 }
 
-//event listener
-toggle.addEventListener("click", toggleMenu, false)
+const signUpModal = document.getElementById('signUpModal')
+const signUpBtn = document.getElementById('sign-up-btn')
+signUpModal.addEventListener('shown.bs.modal', openSignUpModal)
+
+signUpModal.addEventListener('hide.bs.modal', closeSignUpModal)
+
+
+function openSignUpModal() {
+    localStorage.setItem('isSignUpModalOpen', true);
+};
+
+function closeSignUpModal() {
+    localStorage.setItem('isSignUpModalOpen',false);
+};
+
+if(localStorage.getItem('isSignUpModalOpen') == 'true') {
+    signUpBtn.click()
+}
+
+//tooltips
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+
+//alerts
+const alertList = document.querySelectorAll('.alert')
+const alerts = [...alertList].map(element => new bootstrap.Alert(element))

@@ -15,6 +15,9 @@ const PlaySchema = new mongoose.Schema({
   },
   genre: {
     type: Array,
+  },
+  year: {
+    type: String,
   }
 })
 
