@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 
-const PlaySchema = new mongoose.Schema({
+const FavoriteSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   title: {
     type: String,
   },
@@ -30,6 +34,4 @@ const PlaySchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Play', PlaySchema, 'plays')
-
-
+module.exports = mongoose.model('Favorite', FavoriteSchema)

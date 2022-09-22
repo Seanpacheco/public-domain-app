@@ -1,3 +1,4 @@
+const Favorite = require('../models/Favorite')
 const Play = require('../models/Play')
 
 module.exports = {
@@ -30,15 +31,15 @@ module.exports = {
             if(rolesNum === ''){
                 const searchResult = await Play.find({genre: genreInp})
                 console.log (searchResult)
-                res.render('result.ejs',{plays: searchResult, user: req.user})
+                res.render('results.ejs',{plays: searchResult, user: req.user})
             }else if (genreInp === ''){
                 const searchResult = await Play.find({roles: rolesNum})
                 console.log (searchResult)
-                res.render('result.ejs',{plays: searchResult, user: req.user})
+                res.render('results.ejs',{plays: searchResult, user: req.user})
             }else{
                 const searchResult = await Play.find({roles: rolesNum, genre: genreInp})
                 console.log (searchResult)
-                res.render('result.ejs',{plays: searchResult, user: req.user})
+                res.render('results.ejs',{plays: searchResult, user: req.user})
             }
         }catch(err){
             console.log(err)
@@ -53,5 +54,15 @@ module.exports = {
         } catch (error) {
             res.status(500).send({message: error.message})
         }         
+    },
+    addToFavorites: async(req,res)=>{
+        console.log(req.user)
+        try{
+            await Favorite.create({title: req.body.title, playwright: req.body.playwright, userId: req.user.id, img: req.body.img, roles: req.body.roles, genre: (req.body.genre).split(','), year: req.body.year, synopsis: req.body.synopsis, characters: (req.body.characters).split(',')})
+            // stops the browser from constantly loading.
+            res.status(204).send()
+        } catch(error){
+            console.error(error)
+        }
     },
 }
