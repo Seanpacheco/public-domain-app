@@ -31,6 +31,9 @@ const FavoriteSchema = new mongoose.Schema({
   },
   characters: {
     type: Array,
+  },
+  assignments: {
+    type: Array,
   }
 })
 

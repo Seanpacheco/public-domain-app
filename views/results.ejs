@@ -113,7 +113,7 @@
                                 <input type="hidden" value="<%= plays[i].characters %>" name="characters">
                                 <input type="hidden" value="<%=genreInp%>" name="genre">
                                 <input type="hidden" value="<%=rolesNum%>" name="roles">
-                                <button class="btn btn-primary" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add to Favorites" type="submit" name="action">
+                                <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Add to Favorites" type="submit" name="action">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em"  fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -128,6 +128,16 @@
               </table>
         </div>
         <% if(typeof user == 'undefined') { %>
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                <div id="promptToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                    <div class="toast-body">
+                        Log In or Sign Up to be able to add plays to your favorites!
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
             <div class="modal fade" id="logInModal" aria-hidden="true" aria-labelledby="logInModal" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -240,5 +250,6 @@
                 </div>
             </div>
         <% } %>
+        <script src="/JS/init.js"></script>
     </body>
 </html>
