@@ -65,6 +65,6 @@ connectDB()
 
 app.use('/', homeRoutes)
 
-app.listen(3000, function() {
-    console.log('listening on 3000')
-  })
+app.listen(process.env.PORT, ()=>{
+  console.log('Server is running, you better catch it!')
+}) 
