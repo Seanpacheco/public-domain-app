@@ -16,11 +16,12 @@ router.post('/filterSearch', searchController.searchFilter);
 
 router.get('/searchDb', searchController.searchDb);
 
+router.post('/addToFavorites', searchController.addToFavorites);
 
-router.post('/login', authController.postLogin)
+router.post('/login', authController.postLogin);
 
-router.get('/logout', authController.logout)
+router.get('/logout', authController.logout);
 
 
-router.post('/signup', authController.postSignup)
+router.post('/signup', authController.postSignup);
 module.exports = router

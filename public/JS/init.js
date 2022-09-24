@@ -1,34 +1,6 @@
-
-//search bar autocomplete
-$(document).ready(function () {
-    $('#title').autocomplete({
-        source: async function(request,response) {
-            let data= await fetch(`http://localhost:3000/searchDb?query=${request.term}`)
-                    .then(results => results.json())
-                    .then(results => results.map(result => {
-                        return {
-                            label: result.title,
-                            value: result.title,
-                            id: result._id
-                        }
-                    }))
-                response(data)
-                //console.log(response)
-        },
-        minLength: 2,
-        select: function(event, ui) {
-            console.log(ui.item.id)
-            // fetch(`http://localhost:3000/get/${ui.item.id}`)
-            //     .then(results => results.json())
-                window.location.assign(`/plays/${ui.item.id}`)
-
-        }
-    })
-})
-
 //tooltips
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl).enable())
 
 
 //alerts
@@ -37,7 +9,8 @@ const alerts = [...alertList].map(element => new bootstrap.Alert(element))
 
 //toasts
 const toastElList = document.querySelectorAll('.toast')
-const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, {}))
+const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl).show())
+
 
 //modals
 const logInModal = document.getElementById('logInModal')
@@ -77,4 +50,3 @@ function closeSignUpModal() {
 if(localStorage.getItem('isSignUpModalOpen') == 'true') {
     signUpBtn.click()
 }
-

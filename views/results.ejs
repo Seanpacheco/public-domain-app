@@ -5,6 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Results</title>
+        <link rel="shortcut icon" href="assets/IMGS/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/IMGS/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/IMGS/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/IMGS/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
         <link rel="stylesheet" href="/CSS/style.css" type="text/css">
         <link rel="stylesheet" href="/CSS/normalize.css" type="text/css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
@@ -32,7 +37,7 @@
                                 </ul>                
                             </li>
                             <li class="nav-item me-2">
-                                <a class="btn btn-outline-primary nav-link" data-bs-toggle="modal" href="/logout" role="button">Log Out</a>
+                                <a class="btn btn-outline-primary nav-link" href="/logout" role="button">Log Out</a>
                             </li>
                         </ul>
                     </div>        
@@ -64,6 +69,18 @@
                 </nav>
                 <% } %>
         <div class="container">  
+            <% if (locals.messages.success) { %>
+                <% messages.success.forEach( el => { %>
+                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" id="check-circle-fill" viewBox="0 0 16 16" role="img" aria-label="Success:">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                        </svg>       
+                        <div>
+                            <%= el.msg %>
+                        </div>
+                    </div>
+                <% }) %> 
+            <% } %>
             <table class="table">
                 <thead>
                     <tr>
@@ -82,13 +99,21 @@
                         <% } %></td>
                         <td><%= plays[i].roles %></td>
                         <td><%= plays[i].year %></td>
+                        <% if(typeof user != 'undefined') { %>
                         <td>
                             <form action="/addToFavorites" method="post">
                                 <input type="hidden" value="<%= plays[i].title %>" name="title">
-                                <input type="hidden" value="<%= plays[i].roles %>" name="roles">
-                                <input type="hidden" value="<%= plays[i].genre %>" name="genre">
+                                <input type="hidden" value="<%= plays[i].roles %>" name="numOfRoles">
+                                <input type="hidden" value="<%= plays[i].genre %>" name="genres">
+                                <input type="hidden" value="<%= plays[i].playwright %>" name="playwright">
+                                <input type="hidden" value="<%= plays[i].acts %>" name="acts">
+                                <input type="hidden" value="<%= plays[i].synopsis %>" name="synopsis">
+                                <input type="hidden" value="<%= plays[i].img %>" name="img">
                                 <input type="hidden" value="<%= plays[i].year %>" name="year">
-                                <button class="btn btn-primary" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add to Favorites" type="submit" name="action">
+                                <input type="hidden" value="<%= plays[i].characters %>" name="characters">
+                                <input type="hidden" value="<%=genreInp%>" name="genre">
+                                <input type="hidden" value="<%=rolesNum%>" name="roles">
+                                <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Add to Favorites" type="submit" name="action">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em"  fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                         <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
@@ -96,12 +121,23 @@
                                 </button>
                             </form>
                         </td>
+                        <% } %>
                     </tr>
                 <% } %>
                 </tbody>
               </table>
         </div>
         <% if(typeof user == 'undefined') { %>
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                <div id="promptToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                    <div class="toast-body">
+                        Log In or Sign Up to be able to add plays to your favorites!
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
             <div class="modal fade" id="logInModal" aria-hidden="true" aria-labelledby="logInModal" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -214,5 +250,6 @@
                 </div>
             </div>
         <% } %>
+        <script src="/JS/init.js"></script>
     </body>
 </html>
