@@ -9,6 +9,7 @@ const methodOverride = require("method-override");
 const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
+const cors = require('cors');
 
 const homeRoutes = require('./routes/home')
 const dashboardRoutes = require('./routes/dashboard')
@@ -57,14 +58,10 @@ app.use(passport.session());
 app.use(flash());
 
 const bodyParser= require('body-parser');
-const dashboard = require("./controllers/dashboard");
 app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(cors())
-app.use(express.static('public'));
-//Using EJS for views
-app.set("view engine", "ejs");
 
-connectDB()
+// app.use(cors())
+app.use(cors())
 
 app.use('/', homeRoutes)
 app.use('/dashboard', dashboardRoutes)
