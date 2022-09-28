@@ -11,6 +11,8 @@ const logger = require("morgan");
 const connectDB = require("./config/database");
 
 const homeRoutes = require('./routes/home')
+const dashboardRoutes = require('./routes/dashboard')
+
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -55,6 +57,7 @@ app.use(passport.session());
 app.use(flash());
 
 const bodyParser= require('body-parser');
+const dashboard = require("./controllers/dashboard");
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(cors())
 app.use(express.static('public'));
@@ -64,6 +67,7 @@ app.set("view engine", "ejs");
 connectDB()
 
 app.use('/', homeRoutes)
+app.use('/dashboard', dashboardRoutes)
 
 app.listen(process.env.PORT, ()=>{
   console.log('Server is running, you better catch it!')
