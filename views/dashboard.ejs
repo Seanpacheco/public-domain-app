@@ -62,7 +62,7 @@
                                             <h3><%= plays[i].assignments[n] %></h3>
                                             <% } %>
                                             <form class="form-floating" method="post" action="/dashboard/updateAssignment/<%= plays[i].id %>&<%= [n] %>?_method=PUT">
-                                                <input name="assignment" type="text" class="form-control" id="floatingInputValue" placeholder="Name" value="Name">
+                                                <input name="assignment" type="text" class="form-control" id="floatingInputValue" placeholder="Name">
                                                 <label for="floatingInputValue">Assign someone to this role</label>
                                             </form>
                                         </div>
