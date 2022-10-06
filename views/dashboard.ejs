@@ -41,7 +41,9 @@
             </div>        
         </div>
     </nav>
-    <div class="container">
+    <div id="dashboardContainer" class="container">
+        <h1>Welcome <%= user.userName %>, to your Dashboard</h1>
+        <h2>Here you can view your saved favorites and assign people to roles in each play</h2>
         <div class="accordion" id="accordionExample">
             <% for(var i = 0; i < plays.length; i++) {%>
             <div class="accordion-item">

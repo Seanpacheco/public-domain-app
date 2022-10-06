@@ -26,7 +26,7 @@ a {
     width: 100%;
 }
 
-h2, h3 {
+h1, h2, h3 {
     text-align: center;
 }
 .page-main {
@@ -38,6 +38,7 @@ h2, h3 {
 /*search box css start here*/
 .search-sec{
     padding: 2rem;
+    border-radius: 25px;
 }
 .search-sec .form-control{
     appearance: auto;
@@ -131,4 +132,7 @@ ul.results {
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #FFDD86;
     --bs-gradient: none;
+}
+#dashboardContainer {
+ margin-top: 2.5rem;
 }
