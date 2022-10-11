@@ -42,72 +42,34 @@
                 </div>        
             </div>
         </nav>
-        <% }else{ %>
-            <nav class="navbar navbar-expand-lg container-xxl">
-                <div class="container-fluid">
-                  <a class="navbar-brand" href="/">
-                    <img src="/assets/IMGS/theater-svgrepo-com.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                    PlayRight</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                        <ul class="navbar-nav d-flex">
-                            <li class="nav-item me-2">
-                                <a class="nav-link" aria-current="page" href="#">About Us</a>
-                            </li>
-                            <li class="nav-item me-2">
-                                <a class="btn btn-main nav-link" data-bs-toggle="modal" href="#logInModal" role="button">Log In</a>
-                            </li>
-                            <li class="nav-item me-2">
-                                <a class="btn btn-main nav-link" data-bs-toggle="modal" href="#signUpModal" role="button">Sign Up</a>
-                            </li>
-                        </ul>
-                    </div>        
-                </div>
-            </nav>
-            <% } %>
-    <div class="wrapper">
-        <div class="profile-main">
-            <section>
-                <h1>Title</h1>
-                <span><%= plays.title %></span>
-            </section>
-            <section class="playwright">
-                <h2>Playwright</h2>
-                <span><%= plays.playwright %></span>
-            </section>
-            <section>
-                <h2>Genres</h2>
-                <% if(Array.isArray(plays.genre) === false) {%>
-                <span class="genres"><%= plays.genre %></span> 
-                <% } %>   
+    <% }else{ %>
+        <nav class="navbar navbar-expand-lg container-xxl">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="/assets/IMGS/theater-svgrepo-com.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                PlayRight</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav d-flex">
+                        <li class="nav-item me-2">
+                            <a class="nav-link" aria-current="page" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="btn btn-main nav-link" data-bs-toggle="modal" href="#logInModal" role="button">Log In</a>
+                        </li>
+                        <li class="nav-item me-2">
+                            <a class="btn btn-main nav-link" data-bs-toggle="modal" href="#signUpModal" role="button">Sign Up</a>
+                        </li>
+                    </ul>
+                </div>        
+            </div>
+        </nav>
+    <% } %>
+        <div class="container">
                 
-                <% if(Array.isArray(plays.genre) === true) {%>
-                <span class="genres"><%= plays.genre[0] %>, <%= plays.genre[1] %></span> 
-                <% } %>  
-            </section>
-            <section>
-                <h2>Roles</h2>
-                <span><%= plays.roles %></span>
-                <h3>Male: </h3><span><%= plays.maleRoles %></span>
-                <h3>Female: </h3> <span><%= plays.femaleRoles %></span>
-            </section> 
-            <section>
-                <h2>Acts</h2>
-                <span><%= plays.acts %></span>
-            </section>          
-            <section>
-                <h2>Year</h2>
-                <span><%= plays.year %></span>
-            </section>
-            <section>
-                <h2>Synopsis</h2>
-                <p><%= plays.synopsis %></p>
-            </section>
-
         </div>
-    </div>
     <% if(typeof user == 'undefined') { %>
         <div class="modal fade" id="logInModal" aria-hidden="true" aria-labelledby="logInModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
