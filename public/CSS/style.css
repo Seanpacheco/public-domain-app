@@ -136,3 +136,14 @@ ul.results {
 #dashboardContainer {
  margin-top: 2.5rem;
 }
+
+.dashboard-card-header {
+    min-height: 4rem;
+    text-align: center;
+}
+.userName {
+    text-transform: capitalize;
+}
+.aboutUs-container {
+    margin-top: 5em;
+}

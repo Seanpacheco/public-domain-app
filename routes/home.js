@@ -8,6 +8,8 @@ const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 router.get('/', homeController.getIndex); 
 
+router.get('/aboutUs', homeController.getAboutUs);
+
 router.get('/dashboard', ensureAuth, dashboardController.getDashboard);
 
 router.get('/plays/:id', searchController.searchId);

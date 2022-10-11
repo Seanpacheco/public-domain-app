@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= plays.title %></title>
+    <title>About Us</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/IMGS/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/IMGS/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/IMGS/favicon-16x16.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" href="/CSS/style.css" type="text/css">
-    <link rel="stylesheet" href="/CSS/normalize.css" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/style.css" type="text/css">
+    <link rel="stylesheet" href="/CSS/normalize.css" type="text/css">
 </head>
 <body>
     <% if(typeof user != 'undefined') { %>
@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                     <ul class="navbar-nav d-flex">
                         <li class="nav-item me-2">
-                            <a class="nav-link" aria-current="page" href="#">About Us</a>
+                            <a class="nav-link" aria-current="page" href="/aboutUs">About Us</a>
                         </li>
                         <li class="nav-item dropdown me-2">
                             <a id="user-name-btn" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><%= user.userName %></a>
@@ -54,7 +54,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                     <ul class="navbar-nav d-flex">
                         <li class="nav-item me-2">
-                            <a class="nav-link" aria-current="page" href="#">About Us</a>
+                            <a class="nav-link" aria-current="page" href="/aboutUs">About Us</a>
                         </li>
                         <li class="nav-item me-2">
                             <a class="btn btn-main nav-link" data-bs-toggle="modal" href="#logInModal" role="button">Log In</a>
@@ -67,9 +67,6 @@
             </div>
         </nav>
     <% } %>
-        <div class="container">
-                
-        </div>
     <% if(typeof user == 'undefined') { %>
         <div class="modal fade" id="logInModal" aria-hidden="true" aria-labelledby="logInModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
@@ -183,5 +180,14 @@
             </div>
         </div>
     <% } %>
+    <div class="container aboutUs-container">
+        <div class="card">
+            <div class="card-body">
+              <p>PlayRight is a webapp that allows you to search for stageplays in our database of public domain plays. Every play in our database is in the public domain and therefore free to use as you wish!
+              You can search by number of roles, genre, or both and add any play to your favorite list. On your dashboard you can find plays that you have added and assign roles!</p>
+              <p>I created this app to hopefully one day be a resource for teachers of theater and anyone who can't afford to pay licenses. The theater shouldn't be gated by money and there is a wealth of public domain content out there. Overtime I hope to consolidate more plays into the my database and turn this into a truley useful resource for others.</p> 
+            </div>
+        </div>
+    </div>
 </body>
 </html>

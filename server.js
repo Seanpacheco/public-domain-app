@@ -14,6 +14,8 @@ const cors = require('cors');
 const homeRoutes = require('./routes/home')
 const dashboardRoutes = require('./routes/dashboard')
 
+// app.use(cors())
+app.use(cors())
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -60,8 +62,7 @@ app.use(flash());
 const bodyParser= require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// app.use(cors())
-app.use(cors())
+
 
 app.use('/', homeRoutes)
 app.use('/dashboard', dashboardRoutes)
